@@ -227,7 +227,7 @@
                                     </td>
                                     <td class="px-6 py-4">
                                        
-                                        {{ date("d.m Y H:m", strtotime($match->date)) }}
+                                        {{ date("d.m.Y H:i", strtotime($match->date)) }}
                                     </td>
                                 </tr>
                                 @endforeach
