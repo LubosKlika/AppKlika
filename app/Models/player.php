@@ -57,11 +57,14 @@ class player extends Model
             $totalWins = $winsAsPlayer1 + $winsAsPlayer2;
             $totalLosses = $lossesAsPlayer1 + $lossesAsPlayer2;
         
-            if ($totalLosses == 0) {
-                return $totalWins;
-            } else {
+      
+            if ($totalLosses != 0 || $totalWins != 0 ) {
                 return number_format($totalWins / $totalLosses, 2);
+            }else {
+
+                return 'N/A';
             }
+
         }
 
 
@@ -69,10 +72,11 @@ class player extends Model
 
             $wins = $this->matchesPlayer1()->where('winner_id', $this->id)->count();
             $losses = $this->matchesPlayer1()->where('loser_id', $this->id)->count();
-            if($losses == 0) {
-                return $wins;
+            if($losses != 0 || $wins != 0) {
+             return number_format($wins / $losses, 2);
             } else {
-                return number_format($wins / $losses, 2);
+
+                return 'N/A';
             }
         }
         public function getWinBlackRatioAttribute(){
@@ -81,10 +85,11 @@ class player extends Model
 
             $wins = $this->matchesPlayer2()->where('winner_id', $this->id)->count();
             $losses = $this->matchesPlayer2()->where('loser_id', $this->id)->count();
-            if($losses == 0) {
-                return $wins;
+            if($losses != 0 || $wins != 0) {
+               return number_format($wins / $losses, 2);
             } else {
-                return number_format($wins / $losses, 2);
+
+                return 'N/A';
             }
           
         }
